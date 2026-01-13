@@ -1,31 +1,25 @@
-const adminUser = "Ulith"
-const password = "riwicoder"
-
 function main() {
-    alert("Welcome to the Lab");
-    console.log("Welcome to the Lab");
+    alert("Welcome to the CRUDLab");
+    console.log("Welcome to the CRUDLab");
 
-    const logValidation = logIn(password);
+    let usersList = []
 
-    if (logValidation = false) {
-        alert("You're out the Lab");
-        return;
+    option = principalMenu()
+
+    switch (option) {
+        case 1:
+
+        case 2:
+
+        case 3:
+
+
+        case 4:
+            print("Thank you for using our services")
+            print("Exiting...")
+            return
     }
-    else {
-        const name = prompt("Enter your name");
 
-        let age = Number(prompt("Enter your age"));
-        if (validateAge(age) = false) {
-            return;
-        }
-
-        const email = prompt("Enter your email");
-
-        let status = validateInteger("Enter '1' for active user and '2' for inactive user", 1, 2);
-        status = validateStatus(status);
-
-        showUserData(name, age, email, status);
-    }
 }
 
 main();
@@ -51,8 +45,33 @@ function validateInteger(message, min = null, max = null) {
     }
 };
 
+function validateName(message) {
+    while (true) {
+        let name = prompt(message);
+
+        if (name === null) {
+            alert("Action cancelled");
+            return null;
+        }
+
+        name = name.trim();
+
+        if (name === "") {
+            alert("You need to enter a name");
+            continue;
+        }
+
+        if (!/^[a-zA-Z]+$/.test(name)) {
+            alert("The field must include only letters");
+            continue;
+        }
+
+        return name;
+    }
+}
+
 function validateAge(age) {
-    if (Number.isInteger(age) = false || age <= 0 || age > 100) {
+    if (Number.isInteger(age) === false || age <= 0 || age > 100) {
         alert("Enter a correct age");
         return false;
     }
@@ -67,37 +86,20 @@ function validateAge(age) {
     return true;
 };
 
-function validateStatus(status) {
-    if (status == 1) {
-        status = true
-        return status
-    } else {
-        status = false
-        return status
-    };
+function principalMenu() {
+    const option = validate_integer("\n----- PRINCIPAL MENU -----\n1. User register\n2. Show user information\n3. Test simulation\n4.Exit \nEnter an option: ", 1, 4)
+    return option
 }
 
 function showUserData(name, age, email, status) {
-    console.log(`Name: ${name} \nAge: ${age} \nEmail: ${email}, \nStatus: ${status}`);
-    alert(`Name: ${name} \nAge: ${age} \nEmail: ${email} \nStatus: ${status}`);
+    alert(`Name: ${name} -> ${typeof name} \nAge: ${age} -> ${typeof age} \nEmail: ${email} -> ${typeof email} \nStatus: ${status} -> ${typeof status}`);
+    console.log(`Name: ${name} -> ${typeof name} \nAge: ${age} -> ${typeof age} \nEmail: ${email} -> ${typeof email} \nStatus: ${status} -> ${typeof status}`);
 };
 
-function logIn(password) {
-    let tries = 3
-    while (tries > 0) {
+// Registrar usuario
 
-        const passwordTry = prompt("Enter the password")
+// Mostrar información del usuario
 
-        if (passwordTry !== password) {
-            alert("Incorrect password")
-            tries -= 1
-        }
-        else {
-            alert("You have access")
-            return true
-        }
-    }
+// Simular evaluación
 
-    alert("Too many attempts, you cannot log in");
-    return;
-};
+// Salir
