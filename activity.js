@@ -1,8 +1,11 @@
+usersInSystem = {}
+
+
 function main() {
     alert("Welcome to the CRUDLab");
     console.log("Welcome to the CRUDLab");
 
-    let usersList = []
+    let usersList = { name: "", age: 0, courses: 0 }
 
     option = principalMenu()
 
@@ -15,8 +18,8 @@ function main() {
 
 
         case 4:
-            print("Thank you for using our services")
-            print("Exiting...")
+            alert("Thank you for using our services")
+            alert("Exiting...")
             return
     }
 
@@ -71,23 +74,20 @@ function validateName(message) {
 }
 
 function validateAge(age) {
-    if (Number.isInteger(age) === false || age <= 0 || age > 100) {
-        alert("Enter a correct age");
-        return false;
-    }
+    while (true) {
+        if (Number.isInteger(age) === false || age <= 0 || age > 100) {
+            alert("Enter a correct age");
+            continue;
+        }
 
-    if (age < 18) {
-        alert("This user is a minor");
-    }
-    else {
-        alert("This user is an adult");
-    }
+        age < 18 ? console.log("This user is a minor") : console.log("This user is an adult");
 
-    return true;
+        return age;
+    }
 };
 
 function principalMenu() {
-    const option = validate_integer("\n----- PRINCIPAL MENU -----\n1. User register\n2. Show user information\n3. Test simulation\n4.Exit \nEnter an option: ", 1, 4)
+    const option = validateInteger("\n----- PRINCIPAL MENU -----\n1. User register\n2. Show user information\n3. Test simulation\n4.Exit \nEnter an option: ", 1, 4)
     return option
 }
 
@@ -95,6 +95,14 @@ function showUserData(name, age, email, status) {
     alert(`Name: ${name} -> ${typeof name} \nAge: ${age} -> ${typeof age} \nEmail: ${email} -> ${typeof email} \nStatus: ${status} -> ${typeof status}`);
     console.log(`Name: ${name} -> ${typeof name} \nAge: ${age} -> ${typeof age} \nEmail: ${email} -> ${typeof email} \nStatus: ${status} -> ${typeof status}`);
 };
+
+function userRegister() {
+    const name = validateName("Enter your name")
+    const age = validateAge("Enter your age")
+    const courses = validateInteger("How many courses do you have register?", 0)
+
+
+}
 
 // Registrar usuario
 
