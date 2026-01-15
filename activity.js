@@ -1,16 +1,19 @@
-usersInSystem = {}
+let usersInSystem = {
+    name: "",
+    age: 0,
+    courses: 0 }
 
 
 function main() {
     alert("Welcome to the CRUDLab");
     console.log("Welcome to the CRUDLab");
 
-    let usersList = { name: "", age: 0, courses: 0 }
-
     option = principalMenu()
 
     switch (option) {
         case 1:
+            
+            userRegister()
 
         case 2:
 
@@ -98,10 +101,13 @@ function showUserData(name, age, email, status) {
 
 function userRegister() {
     const name = validateName("Enter your name")
+    usersInSystem.userName = name
+
     const age = validateAge("Enter your age")
+    usersInSystem.userAge = age
+
     const courses = validateInteger("How many courses do you have register?", 0)
-
-
+    usersInSystem.userCourses = courses
 }
 
 // Registrar usuario
